@@ -38,7 +38,7 @@ void UnosP(struct osoba* P) {
     printf("Unesi prezime: \n");
     scanf("%s", q->prezime);
     printf("Unesi godinu rodenja: \n");
-    scanf("%define", &q->godina);
+    scanf("%d", &q->godina);
 
     q->next = P->next;
     P->next = q;
@@ -120,6 +120,7 @@ void Sort(Pozicija P)
 
 int UpisiUDatoteku(Pozicija P)
 {
+    P = P->next;
     FILE* fp;
     fp = fopen("datoteka.txt", "w");
     if (fp == NULL)
@@ -146,7 +147,7 @@ int ProcitajIzDatoteke(Pozicija P)
     q = (struct osoba*)malloc(sizeof(struct osoba));
     q = q->next;
     FILE* fp;
-    fp = fopen("datoteka.txt", "w");
+    fp = fopen("datoteka.txt", "r");
     if (fp == NULL)
     {
         printf("Otvaranje nije uspjelo!");
