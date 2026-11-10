@@ -38,7 +38,7 @@ void UnosP(struct osoba *P){
     printf("Unesi prezime: \n");
     scanf("%s", q->prezime);
     printf("Unesi godinu rodenja: \n");
-    scanf("%define", &q->godina);
+    scanf("%d", &q->godina);
     
     q->next = P->next;
     P->next = q;
