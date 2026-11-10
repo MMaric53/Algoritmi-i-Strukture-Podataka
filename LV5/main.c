@@ -26,6 +26,7 @@ void EnterList(Position head)
 		temp->next = q;
 		temp = q;
 	}
+
 }
 
 void printList(Position head)
@@ -140,10 +141,41 @@ void Presjek(Position h1, Position h2, Position hr)
 				hr = q;
 			}
 		}
+	}
+}
 
+void Sort(Position head)
+{
+	Position i, j;
+	int temp;
+
+	for (i = head->next; i != NULL; i = i->next)
+	{
+		for (j = i->next; j != NULL; j = j->next)
+		{
+			if (i->el > j->el)
+			{
+				temp = i->el;
+				i->el = j->el;
+				j->el = temp;
+			}
+		}
 	}
 
+	for (i = head->next; i != NULL; i = i->next)
+	{
+		for (j = i->next; j != NULL; j = j->next)
+		{
+			if (i->el == j->el)
+			{
+				i->next = j->next;
+				free(j);
+				j = i;
+			}
+		}
+	}
 }
+
 
 int main()
 {
@@ -151,10 +183,12 @@ int main()
 
 	headL1 = (Position)malloc(sizeof(struct Node));
 	EnterList(headL1);
+	Sort(headL1);
 	printList(headL1);
 
 	headL2 = (Position)malloc(sizeof(struct Node));
 	EnterList(headL2);
+	Sort(headL2);
 	printList(headL2);
 
 	headU = (Position)malloc(sizeof(struct Node));
